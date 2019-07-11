@@ -28,10 +28,19 @@
 var scene = new THREE.Scene();
 // カメラの作成
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
 // レンダラーの作成（アンチエイリアス有効）
 var renderer = new THREE.WebGLRenderer( {antialias: true} );
+
+// ステレオ
+var effect = new THREE.StereoEffect(renderer);
+
 // レンダラーが描画するキャンバスサイズの設定
 renderer.setSize( window.innerWidth, window.innerHeight );
+
+// ステレオ
+effect.setSize(width, height);
+
 // キャンバスをDOMツリーに追加
 document.body.appendChild( renderer.domElement );
 
@@ -65,6 +74,9 @@ function render(){
 
 	// レンダリング
 	renderer.render(scene,camera);
+	
+	// ステレオ
+	effect.render(scene, camera);
 
 	controls.update();
 }
