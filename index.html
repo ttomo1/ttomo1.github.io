@@ -40,7 +40,7 @@ var effect = new THREE.StereoEffect(renderer);
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 // ステレオ
-//effect.setSize(width, height);
+effect.setSize(window.innerWidth, window.innerHeight);
 
 // キャンバスをDOMツリーに追加
 document.body.appendChild( renderer.domElement );
@@ -77,7 +77,7 @@ function render(){
 	renderer.render(scene,camera);
 	
 	// ステレオ
-//	effect.render(scene, camera);
+	effect.render(scene, camera);
 
 	controls.update();
 }
