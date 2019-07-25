@@ -58,21 +58,21 @@ scene.add( light );
 var controls = new THREE.DeviceOrientationControls( camera );
 
 // 球体の作成
-var geometry = new THREE.SphereGeometry( 5, 32, 16 );
+var sphere_geometry = new THREE.SphereGeometry( 5, 32, 16 );
 // テクスチャを球体の裏側にマップする
-geometry.scale( - 1, 1, 1 );
+sphere_geometry.scale( - 1, 1, 1 );
 
 // テクスチャ画像の読み込み
 var texture = new THREE.TextureLoader().load( '360.jpg' );
 // マテリアルの作成
-var material = new THREE.MeshPhongMaterial( { map: texture, color: 0xffffff } );
+var sphere_material = new THREE.MeshPhongMaterial( { map: texture, color: 0xffffff } );
 
 // オブジェクトの作成
-var mesh = new THREE.Mesh( geometry, material );
+var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
 // オブジェクトをy軸に沿って回転
-mesh.rotation.y = Math.PI/2;
+sphere_mesh.rotation.y = Math.PI/2;
 // オブジェクトをシーンに追加
-scene.add( mesh );
+scene.add( sphere_mesh );
 
 function render(){
 	requestAnimationFrame( render );
