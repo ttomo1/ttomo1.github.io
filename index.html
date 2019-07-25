@@ -28,6 +28,12 @@
     <script>
 
 	    
+//THREE.Raycaster用
+var raycaster,scopedObj;
+var cursor= new THREE.Vector2(0,0);
+//THREE.Raycaster
+raycaster = new THREE.Raycaster();    
+	    
 
 // シーンの作成
 var scene = new THREE.Scene();
@@ -93,6 +99,7 @@ target_mesh.position.x = 5.0;
 // オブジェクトをシーンに追加
 scene.add( target_mesh );
 	    
+var targets=[target_mesh];
 	    
 function render(){
 	requestAnimationFrame( render );
@@ -104,6 +111,21 @@ function render(){
 	effect.render(scene, camera);
 
 	controls.update();
+	
+	  // ポイントが乗っているオブジェクトを取得
+
+	raycaster.setFromCamera( cursor, camera );
+	var intersects = raycaster.intersectObjects( targets );
+	if ( intersects.length > 0 ) {
+		if ( scopedObj != intersects[ 0 ].object ) {
+			if ( scopedObj ) scopedObj.scale.set(1,1,1);
+			scopedObj = intersects[ 0 ].object;
+			scopedObj.scale.set(2,2,2);
+		}
+	} else {
+		if ( scopedObj ) scopedObj.scale.set(1,1,1);
+		scopedObj = null;
+  	}
 }
 render();
 
