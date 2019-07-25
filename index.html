@@ -73,13 +73,13 @@ var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
 // オブジェクトをy軸に沿って回転
 sphere_mesh.rotation.y = Math.PI/2;
 // オブジェクトをシーンに追加
-scene.add( sphere_mesh );
+//scene.add( sphere_mesh );
 
 
 // 球体の作成
 var target_geometry = new THREE.SphereGeometry( 1, 16, 16 );
 // テクスチャを球体の裏側にマップする
-target_geometry.scale( -1, 1, 1 );
+//target_geometry.scale( 1, 1, 1 );
 
 // テクスチャ画像の読み込み
 //var texture = new THREE.TextureLoader().load( '360.jpg' );
