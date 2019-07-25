@@ -79,7 +79,7 @@ scene.add( sphere_mesh );
 // 球体の作成
 var target_geometry = new THREE.SphereGeometry( 5, 16, 16 );
 // テクスチャを球体の裏側にマップする
-sphere_geometry.scale( - 0.2, 0.2, 0.2 );
+target_geometry.scale( 0.2, 0.2, 0.2 );
 
 // テクスチャ画像の読み込み
 //var texture = new THREE.TextureLoader().load( '360.jpg' );
