@@ -59,7 +59,7 @@ var controls = new THREE.DeviceOrientationControls( camera );
 
 	    
 // 球体の作成
-var sphere_geometry = new THREE.SphereGeometry( 4, 32, 32 );
+var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
 // テクスチャを球体の裏側にマップする
 sphere_geometry.scale( - 1, 1, 1 );
 
@@ -89,7 +89,7 @@ var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
 // オブジェクトの作成
 var target_mesh = new THREE.Mesh( target_geometry, target_material );
 // オブジェクトをy軸に沿って回転
-target_mesh.position.x = 10.0;
+target_mesh.position.x = 20.0;
 // オブジェクトをシーンに追加
 scene.add( target_mesh );
 	    
