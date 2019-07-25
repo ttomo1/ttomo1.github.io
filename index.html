@@ -57,8 +57,9 @@ scene.add( light );
 // DeviceOrientationControlsインスタンス作成
 var controls = new THREE.DeviceOrientationControls( camera );
 
+	    
 // 球体の作成
-var sphere_geometry = new THREE.SphereGeometry( 5, 32, 16 );
+var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
 // テクスチャを球体の裏側にマップする
 sphere_geometry.scale( - 1, 1, 1 );
 
@@ -74,6 +75,25 @@ sphere_mesh.rotation.y = Math.PI/2;
 // オブジェクトをシーンに追加
 scene.add( sphere_mesh );
 
+
+// 球体の作成
+var target_geometry = new THREE.SphereGeometry( 0.5, 16, 16 );
+// テクスチャを球体の裏側にマップする
+//sphere_geometry.scale( - 1, 1, 1 );
+
+// テクスチャ画像の読み込み
+//var texture = new THREE.TextureLoader().load( '360.jpg' );
+// マテリアルの作成
+var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+
+// オブジェクトの作成
+var target_mesh = new THREE.Mesh( target_geometry, target_material );
+// オブジェクトをy軸に沿って回転
+target_mesh.position.x = 4.5;
+// オブジェクトをシーンに追加
+scene.add( target_mesh );
+	    
+	    
 function render(){
 	requestAnimationFrame( render );
 
