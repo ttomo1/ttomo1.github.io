@@ -106,7 +106,7 @@ var targets=[target_mesh];
 	    
 	    
 var material = new THREE.MeshBasicMaterial({
-  map: texture(),
+  map: texture_f(),
   side: THREE.DoubleSide,
   transparent: true
 });
@@ -126,7 +126,7 @@ var texture_size = {
       height: 256
     };
 	    
-function texture() {
+function texture_f() {
   var canvas_ = document.createElement('canvas');   
   canvas_.width = texture_size.width;
   canvas_.height = texture_size.height;
