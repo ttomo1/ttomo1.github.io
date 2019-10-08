@@ -123,6 +123,7 @@ var material = new THREE.MeshBasicMaterial({
 var geometry = new THREE.PlaneGeometry(texture_size.width, texture_size.height);
 
 var mesh = new THREE.Mesh(geometry, material);
+mesh.position.x = 5.0;
 
 scene.add(mesh);
 
