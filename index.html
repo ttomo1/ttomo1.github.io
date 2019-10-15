@@ -23,10 +23,7 @@
 	</head>
 
 	<body>
-		
-		<div id="info">Simple Cloth Simulation<br/>
-			Verlet integration with relaxed constraints<br/>
-		</div>
+		<div id="div0"></div>
 		
 		<script src="three.min.js"></script>
 		<script src="DeviceOrientationControls.js"></script>
@@ -142,6 +139,10 @@ function render(){
 	var ctx = document.getElementById('canvas').getContext('2d');
   	ctx.font = "48px serif";
   	ctx.fillText("Hello world", 10, 50);
+
+	var doc0= document.getElementById("div0");  
+	doc0.innerHTML= "div0の箇所にテキストを表示します。";   
+
 	
 }
 render();
