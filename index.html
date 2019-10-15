@@ -18,15 +18,13 @@
 				overflow: hidden;
 			}
 		</style>
-	</head>
-
-	<body>
+		
 		<script src="three.min.js"></script>
 		<script src="DeviceOrientationControls.js"></script>
 		<script src="StereoEffect.js"></script>
 
 		
-    <script>
+    		<script>
 
 	    
 //THREE.Raycaster用
@@ -42,7 +40,7 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 // レンダラーの作成（アンチエイリアス有効）
-var renderer = new THREE.WebGLRenderer( {antialias: true} );
+var renderer = new THREE.WebGLRenderer( {antialias: true, canvas: document.querySelector('#myCanvas')} );
 
 // ステレオ
 var effect = new THREE.StereoEffect(renderer);
@@ -135,6 +133,10 @@ function render(){
 render();
 	    
 
-    </script>
-  </body>
+  		</script>
+	</head>
+
+	<body>
+  		<canvas id="myCanvas"></canvas>
+  	</body>
   </html>
