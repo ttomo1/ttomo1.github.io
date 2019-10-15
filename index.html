@@ -23,6 +23,8 @@
 	</head>
 
 	<body>
+		
+		
 		<script src="three.min.js"></script>
 		<script src="DeviceOrientationControls.js"></script>
 		<script src="StereoEffect.js"></script>
@@ -133,6 +135,10 @@ function render(){
 		if ( scopedObj ) scopedObj.scale.set(1,1,1);
 		scopedObj = null;
   	}
+	
+	var ctx = document.getElementById('canvas').getContext('2d');
+  	ctx.font = "48px serif";
+  	ctx.fillText("Hello world", 10, 50);
 	
 }
 render();
