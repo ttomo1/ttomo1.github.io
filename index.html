@@ -131,31 +131,7 @@ scene.add(mesh);
 	    
 	    
     
-function texture_f() {
-  var canvas_ = document.createElement('canvas');   
-  canvas_.width = texture_size.width;
-  canvas_.height = texture_size.height;
 
-  var context = canvas_.getContext('2d');
-
-  context.fillStyle = 'rgba(0, 0, 0, 0.0)';
-  context.fillRect(0, 0, texture_size.width, texture_size.height);
-    
-  var y_ = texture_size.height * 0.5;
-
-  var x_ = context.measureText(text).width;
-  x_ = (texture_size.width - x_) * 0.25;
-
-  context.font = font_family;
-  context.textAlign = 'left';
-  context.fillStyle = "#ffffff";
-  context.fillText(text, x_, y_);
-
-  var texture_ = new THREE.Texture(canvas_);
-  texture_.needsUpdate = true;
-
-  return texture_;
-}
 	
 	    
 	    
