@@ -75,7 +75,9 @@ var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
 sphere_geometry.scale( - 1, 1, 1 );
 
 // テクスチャ画像の読み込み
-var texture = new THREE.TextureLoader().load( '360.jpg' );
+//var texture = new THREE.TextureLoader().load( '360.jpg' );
+// テクスチャ画像の読み込み
+var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
 // マテリアルの作成
 var sphere_material = new THREE.MeshPhongMaterial( { map: texture, color: 0xffffff } );
 
