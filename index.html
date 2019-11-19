@@ -144,7 +144,7 @@ function render(){
 	raycaster.setFromCamera( cursor, camera );
 	var intersects = raycaster.intersectObjects( targets );
 	if ( intersects.length > 0 ) {
-		scnene_id = 3-scene_id;
+		scene_id = 3-scene_id;
 		scene_change(scene_id);
 	}
 //	if ( intersects.length > 0 ) {
