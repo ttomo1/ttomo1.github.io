@@ -144,7 +144,7 @@ function scene_change(scene_id){
 	for(var i=0;i<targets.length;i++)
 	{
 		// オブジェクトの作成
-		var targets[i] = new THREE.Mesh( target_geometry, target_material );
+		targets[i] = new THREE.Mesh( target_geometry, target_material );
 		targets[i].position.x=target_xs[targets_in_scene[scene_id][i]];
 		targets[i].position.y=target_ys[targets_in_scene[scene_id][i]];
 		targets[i].position.z=target_zs[targets_in_scene[scene_id][i]];
