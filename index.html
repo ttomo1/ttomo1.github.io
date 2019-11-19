@@ -77,9 +77,14 @@ sphere_geometry.scale( - 1, 1, 1 );
 // テクスチャ画像の読み込み
 //var texture = new THREE.TextureLoader().load( '360.jpg' );
 // テクスチャ画像の読み込み
-var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
+var textures = new Array(4)
+var textures[0] = new THREE.TextureLoader().load( 'scene_a.JPG' );
+var textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
+var textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
+var textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
+//var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
 // マテリアルの作成
-var sphere_material = new THREE.MeshPhongMaterial( { map: texture, color: 0xffffff } );
+var sphere_material = new THREE.MeshPhongMaterial( { map: textures[0], color: 0xffffff } );
 
 // オブジェクトの作成
 var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
