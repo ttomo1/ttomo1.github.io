@@ -118,7 +118,12 @@ function scene_change(scene_id){
 //	sphere_mesh.material.map = new THREE.Texture( textures[scene_id] );
 //     	sphere_mesh.material.map.needsUpdate = true;
 	
-//	scene.remove( mesh );
+	scene.remove( sphere_mesh );
+	sphere_material.dispose()
+	sphere_material = new THREE.MeshPhongMaterial( { map: textures[scene_id], color: 0xffffff } );
+	sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
+	scene.add( sphere_mesh );
+	
 //	geometry.dispose();
 //	material.dispose();
 //	texture.dispose();
