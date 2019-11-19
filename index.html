@@ -111,12 +111,10 @@ scene.add( target_mesh );
 	    
 var targets=[target_mesh];
 
-scene_change(3);			
+var scene_id=1;
+scene_change(scene_id);			
 			
 function scene_change(scene_id){
-	
-//	sphere_mesh.material.map = new THREE.Texture( textures[scene_id] );
-//     	sphere_mesh.material.map.needsUpdate = true;
 	
 	scene.remove( sphere_mesh );
 	sphere_material.dispose()
@@ -146,15 +144,19 @@ function render(){
 	raycaster.setFromCamera( cursor, camera );
 	var intersects = raycaster.intersectObjects( targets );
 	if ( intersects.length > 0 ) {
-		if ( scopedObj != intersects[ 0 ].object ) {
-			if ( scopedObj ) scopedObj.scale.set(1,1,1);
-			scopedObj = intersects[ 0 ].object;
-			scopedObj.scale.set(2,2,2);
-		}
-	} else {
-		if ( scopedObj ) scopedObj.scale.set(1,1,1);
-		scopedObj = null;
-  	}
+		scnene_id = 3-scene_id;
+		scene_change(scene_id);
+	}
+//	if ( intersects.length > 0 ) {
+//		if ( scopedObj != intersects[ 0 ].object ) {
+//			if ( scopedObj ) scopedObj.scale.set(1,1,1);
+//			scopedObj = intersects[ 0 ].object;
+//			scopedObj.scale.set(2,2,2);
+//		}
+//	} else {
+//		if ( scopedObj ) scopedObj.scale.set(1,1,1);
+//		scopedObj = null;
+//  	}
 
 	
 	var intersect = raycaster.intersectObject( sphere_mesh );
