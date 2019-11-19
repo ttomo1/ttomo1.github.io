@@ -127,7 +127,8 @@ function scene_change(scene_id){
 //	texture.dispose();
 }
 	    
-	    
+var frame_num=0;
+			
 function render(){
 	requestAnimationFrame( render );
 
@@ -143,20 +144,30 @@ function render(){
 
 	raycaster.setFromCamera( cursor, camera );
 	var intersects = raycaster.intersectObjects( targets );
-	if ( intersects.length > 0 ) {
-		scene_id = 3-scene_id;
-		scene_change(scene_id);
-	}
 //	if ( intersects.length > 0 ) {
-//		if ( scopedObj != intersects[ 0 ].object ) {
+//		scene_id = 3-scene_id;
+//		scene_change(scene_id);
+//	}
+	if ( intersects.length > 0 ) {
+		if ( scopedObj != intersects[ 0 ].object ) {
 //			if ( scopedObj ) scopedObj.scale.set(1,1,1);
-//			scopedObj = intersects[ 0 ].object;
-//			scopedObj.scale.set(2,2,2);
-//		}
-//	} else {
-//		if ( scopedObj ) scopedObj.scale.set(1,1,1);
-//		scopedObj = null;
-//  	}
+			scopedObj = intersects[ 0 ].object;
+			scopedObj.scale.set(2,2,2);
+			frame_num=0;
+		}
+		else
+		{
+			frame_num++;
+			if(frame_num>=10)
+			{
+				scene_id=3-scene_id;
+				scene_change(scene_id);
+			}
+		}
+	} else {
+		if ( scopedObj ) scopedObj.scale.set(1,1,1);
+		scopedObj = null;
+  	}
 
 	
 	var intersect = raycaster.intersectObject( sphere_mesh );
