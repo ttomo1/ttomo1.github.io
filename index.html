@@ -132,7 +132,7 @@ function scene_change(scene_id){
 	sphere_material.dispose()
 	sphere_material = new THREE.MeshPhongMaterial( { map: textures[scene_id], color: 0xffffff } );
 	sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
-	sphree_mesh.rotation.y=angles[scene_id];
+	sphere_mesh.rotation.y=angles[scene_id];
 	scene.add( sphere_mesh );
 	
 	
