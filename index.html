@@ -83,9 +83,10 @@ textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
 textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
 textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
 //var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
+
+			
 // マテリアルの作成
 var sphere_material = new THREE.MeshPhongMaterial( { map: textures[1], color: 0xffffff } );
-
 // オブジェクトの作成
 var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
 // オブジェクトをy軸に沿って回転
@@ -94,23 +95,33 @@ sphere_mesh.rotation.y = Math.PI/2;
 scene.add( sphere_mesh );
 
 
+			
 // 球体の作成
 var target_geometry = new THREE.SphereGeometry( 0.25, 16, 16 );
-// テクスチャを球体の裏側にマップする
-//target_geometry.scale( 1, 1, 1 );
-
 // マテリアルの作成
 var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
 
-// オブジェクトの作成
-var target_mesh = new THREE.Mesh( target_geometry, target_material );
-// オブジェクトをy軸に沿って回転
-target_mesh.position.x = 5.0;
-// オブジェクトをシーンに追加
-scene.add( target_mesh );
-	    
-var targets=[target_mesh];
+			
+var target_xs=new Array(2);
+var target_ys=new Array(2);
+var target_zs=new Array(2);
 
+target_xs[0]=2.6;
+target_ys[0]=0;
+target_zs[0]=-4.3;
+
+target_xs[1]=1.4;
+target_ys[1]=0;
+target_zs[1]=4.7;
+
+var targets_in_scene=new Array(4);
+targets[0]=[];
+targets[1]=[0];
+targets[2]=[1];
+targets[3]=[];
+			
+var targets=[];
+			
 var scene_id=1;
 scene_change(scene_id);			
 			
@@ -121,6 +132,23 @@ function scene_change(scene_id){
 	sphere_material = new THREE.MeshPhongMaterial( { map: textures[scene_id], color: 0xffffff } );
 	sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
 	scene.add( sphere_mesh );
+	
+	
+	for(var i=0;i<targets.length;i++)
+	{
+		scene.remove(targets[i]);
+	}
+
+	targets=new Array(target_in_scene[scene_id].length);
+	
+	for(var i=0;i<targets.length;i++)
+	{
+		// オブジェクトの作成
+		var targets[i] = new THREE.Mesh( target_geometry, target_material );
+		targets[i].position.x=target_xs[targets_in_scene[scene_id][i]];
+		targets[i].position.y=target_ys[targets_in_scene[scene_id][i]];
+		targets[i].position.z=target_zs[targets_in_scene[scene_id][i]];
+		scene.add( targets[i] );
 	
 //	geometry.dispose();
 //	material.dispose();
