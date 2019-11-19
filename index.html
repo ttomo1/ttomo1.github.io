@@ -99,8 +99,6 @@ var target_geometry = new THREE.SphereGeometry( 0.25, 16, 16 );
 // テクスチャを球体の裏側にマップする
 //target_geometry.scale( 1, 1, 1 );
 
-// テクスチャ画像の読み込み
-//var texture = new THREE.TextureLoader().load( '360.jpg' );
 // マテリアルの作成
 var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
 
@@ -112,9 +110,19 @@ target_mesh.position.x = 5.0;
 scene.add( target_mesh );
 	    
 var targets=[target_mesh];
-	
 
+scene_change(3);			
+			
+function scene_change(scene_id){
 	
+	sphere_mesh.material.map = new THREE.Texture( textures[scene_id] );
+      	sphere_mesh.material.map.needsUpdate = true;
+	
+//	scene.remove( mesh );
+//	geometry.dispose();
+//	material.dispose();
+//	texture.dispose();
+}
 	    
 	    
 function render(){
