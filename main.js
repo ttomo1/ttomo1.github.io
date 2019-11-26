@@ -114,10 +114,10 @@ var frame_num=0;
 function render(){
 	requestAnimationFrame( render );
 	// レンダリング
-	renderer.render(scene,camera);
+	//renderer.render(scene,camera);
 	
 	// ステレオ
-	//effect.render(scene, camera);
+	effect.render(scene, camera);
 	controls.update();
 	
 	// ポイントが乗っているオブジェクトを取得
@@ -151,8 +151,8 @@ function render(){
 	
 	var intersect = raycaster.intersectObject( sphere_mesh );
 	
-	var doc0= document.getElementById("div0");  
-	doc0.innerHTML= String(intersect[0].point.x)+" "+String(intersect[0].point.y)+" "+String(intersect[0].point.z)+" "+String(angles[2]);   
+	//var doc0= document.getElementById("div0");  
+	//doc0.innerHTML= String(intersect[0].point.x)+" "+String(intersect[0].point.y)+" "+String(intersect[0].point.z)+" "+String(angles[2]);   
 	
 }
 render();
