@@ -1,57 +1,57 @@
-//THREE.Raycaster—p
+//THREE.Raycasterç”¨
 var raycaster,scopedObj;
 var cursor= new THREE.Vector2(0,0);
 //THREE.Raycaster
 raycaster = new THREE.Raycaster();    
 	    
-// ƒV[ƒ“‚Ìì¬
+// ã‚·ãƒ¼ãƒ³ã®ä½œæˆ
 var scene = new THREE.Scene();
-// ƒJƒƒ‰‚Ìì¬
+// ã‚«ãƒ¡ãƒ©ã®ä½œæˆ
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-// ƒŒƒ“ƒ_ƒ‰[‚Ìì¬iƒAƒ“ƒ`ƒGƒCƒŠƒAƒX—LŒøj
+// ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã®ä½œæˆï¼ˆã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹æœ‰åŠ¹ï¼‰
 var renderer = new THREE.WebGLRenderer( {antialias: true} );
-// ƒXƒeƒŒƒI
+// ã‚¹ãƒ†ãƒ¬ã‚ª
 var effect = new THREE.StereoEffect(renderer);
-// ƒŒƒ“ƒ_ƒ‰[‚ª•`‰æ‚·‚éƒLƒƒƒ“ƒoƒXƒTƒCƒY‚Ìİ’è
+// ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ãŒæç”»ã™ã‚‹ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚µã‚¤ã‚ºã®è¨­å®š
 renderer.setSize( window.innerWidth, window.innerHeight );
-// ƒXƒeƒŒƒI
+// ã‚¹ãƒ†ãƒ¬ã‚ª
 effect.setSize(window.innerWidth, window.innerHeight);
-// ƒLƒƒƒ“ƒoƒX‚ğDOMƒcƒŠ[‚É’Ç‰Á
+// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’DOMãƒ„ãƒªãƒ¼ã«è¿½åŠ 
 document.body.appendChild( renderer.domElement );
-// ŠÂ‹«Œõ‚Ìì¬
+// ç’°å¢ƒå…‰ã®ä½œæˆ
 var light = new THREE.AmbientLight( 0xffffff );
-// ŠÂ‹«Œõ‚ğƒV[ƒ“‚Ö’Ç‰Á
+// ç’°å¢ƒå…‰ã‚’ã‚·ãƒ¼ãƒ³ã¸è¿½åŠ 
 scene.add( light );
-// DeviceOrientationControlsƒCƒ“ƒXƒ^ƒ“ƒXì¬
+// DeviceOrientationControlsã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
 var controls = new THREE.DeviceOrientationControls( camera );
 	    
-// ‹…‘Ì‚Ìì¬
+// çƒä½“ã®ä½œæˆ
 var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
-// ƒeƒNƒXƒ`ƒƒ‚ğ‹…‘Ì‚Ì— ‘¤‚Éƒ}ƒbƒv‚·‚é
+// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’çƒä½“ã®è£å´ã«ãƒãƒƒãƒ—ã™ã‚‹
 sphere_geometry.scale( - 1, 1, 1 );
-// ƒeƒNƒXƒ`ƒƒ‰æ‘œ‚Ì“Ç‚İ‚İ
+// ãƒ†ã‚¯ã‚¹ãƒãƒ£ç”»åƒã®èª­ã¿è¾¼ã¿
 //var texture = new THREE.TextureLoader().load( '360.jpg' );
-// ƒeƒNƒXƒ`ƒƒ‰æ‘œ‚Ì“Ç‚İ‚İ
+// ãƒ†ã‚¯ã‚¹ãƒãƒ£ç”»åƒã®èª­ã¿è¾¼ã¿
 var textures = new Array(4);
 textures[0] = new THREE.TextureLoader().load( 'scene_a.JPG' );
 textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
 textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
 textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
 //var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
-var angles=[0,0,90,0];
+var angles=[0,0,-90,0];
 			
-// ƒ}ƒeƒŠƒAƒ‹‚Ìì¬
+// ãƒãƒ†ãƒªã‚¢ãƒ«ã®ä½œæˆ
 var sphere_material = new THREE.MeshPhongMaterial( { map: textures[1], color: 0xffffff } );
-// ƒIƒuƒWƒFƒNƒg‚Ìì¬
+// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
 var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
-// ƒIƒuƒWƒFƒNƒg‚ğy²‚É‰ˆ‚Á‚Ä‰ñ“]
+// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’yè»¸ã«æ²¿ã£ã¦å›è»¢
 //sphere_mesh.rotation.y = Math.PI/2;
-// ƒIƒuƒWƒFƒNƒg‚ğƒV[ƒ“‚É’Ç‰Á
+// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚·ãƒ¼ãƒ³ã«è¿½åŠ 
 scene.add( sphere_mesh );
 			
-// ‹…‘Ì‚Ìì¬
+// çƒä½“ã®ä½œæˆ
 var target_geometry = new THREE.SphereGeometry( 0.25, 16, 16 );
-// ƒ}ƒeƒŠƒAƒ‹‚Ìì¬
+// ãƒãƒ†ãƒªã‚¢ãƒ«ã®ä½œæˆ
 var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
 			
 var target_xs=new Array(2);
@@ -92,7 +92,7 @@ function scene_change(scene_id){
 	
 	for(var i=0;i<targets.length;i++)
 	{
-		// ƒIƒuƒWƒFƒNƒg‚Ìì¬
+		// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
 		targets[i] = new THREE.Mesh( target_geometry, target_material );
 		targets[i].position.x=target_xs[targets_in_scene[scene_id][i]];
 		targets[i].position.y=target_ys[targets_in_scene[scene_id][i]];
@@ -109,14 +109,14 @@ var frame_num=0;
 			
 function render(){
 	requestAnimationFrame( render );
-	// ƒŒƒ“ƒ_ƒŠƒ“ƒO
+	// ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°
 	renderer.render(scene,camera);
 	
-	// ƒXƒeƒŒƒI
+	// ã‚¹ãƒ†ãƒ¬ã‚ª
 	//effect.render(scene, camera);
 	controls.update();
 	
-	// ƒ|ƒCƒ“ƒg‚ªæ‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğæ“¾
+	// ãƒã‚¤ãƒ³ãƒˆãŒä¹—ã£ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
 	raycaster.setFromCamera( cursor, camera );
 	var intersects = raycaster.intersectObjects( targets );
 //	if ( intersects.length > 0 ) {
