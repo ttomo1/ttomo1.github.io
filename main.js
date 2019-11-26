@@ -1,9 +1,3 @@
-//THREE.Raycaster用
-var raycaster,scopedObj;
-var cursor= new THREE.Vector2(0,0);
-//THREE.Raycaster
-raycaster = new THREE.Raycaster();    
-	    
 // シーンの作成
 var scene = new THREE.Scene();
 // カメラの作成
@@ -24,36 +18,39 @@ var light = new THREE.AmbientLight( 0xffffff );
 scene.add( light );
 // DeviceOrientationControlsインスタンス作成
 var controls = new THREE.DeviceOrientationControls( camera );
-	    
-// 球体の作成
-var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
-// テクスチャを球体の裏側にマップする
-sphere_geometry.scale( - 1, 1, 1 );
-// テクスチャ画像の読み込み
-//var texture = new THREE.TextureLoader().load( '360.jpg' );
-// テクスチャ画像の読み込み
+
+
+
+// 360度画像の読み込み
 var textures = new Array(4);
 textures[0] = new THREE.TextureLoader().load( 'scene_a.JPG' );
 textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
 textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
 textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
-//var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
+
+// 画像間の角度のずれを補正するため
 var angles=[0,0,-45,0];
-			
-// マテリアルの作成
-var sphere_material = new THREE.MeshPhongMaterial( { map: textures[1], color: 0xffffff } );
+
+
+// 大きな球体の作成（360度画像を張り付けるための）
+var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
+// テクスチャを球体の裏側にマップする
+sphere_geometry.scale( - 1, 1, 1 );		
+// マテリアルの作成（とりあえず0番の画像を張り付けておく）
+var sphere_material = new THREE.MeshPhongMaterial( { map: textures[0], color: 0xffffff } );
 // オブジェクトの作成
 var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
-// オブジェクトをy軸に沿って回転
-//sphere_mesh.rotation.y = Math.PI/2;
 // オブジェクトをシーンに追加
 scene.add( sphere_mesh );
-			
-// 球体の作成
+
+
+
+// シーンチェンジ用マーカー（白い球体）の作成
 var target_geometry = new THREE.SphereGeometry( 0.25, 16, 16 );
 // マテリアルの作成
 var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
-			
+
+// 各360度画像に配置するマーカーの位置
 var target_xs=new Array(2);
 var target_ys=new Array(2);
 var target_zs=new Array(2);
@@ -69,17 +66,25 @@ targets_in_scene[1]=[0];
 targets_in_scene[2]=[1];
 targets_in_scene[3]=[];
 			
-var targets=[];
-			
-var scene_id=1;
-scene_change(scene_id);			
 
+// 視線との交差を調べるマーカーの配列
+var targets=[];
+
+
+// 角度を度数法から弧度法に変換するための関数
 function to_radian(degree){
 	return degree*Math.PI/180;
 }
 
+
+// 360度画像の初期値を1番としてシーンチェンジ
+var scene_id=1;
+scene_change(scene_id);			
+
+// シーンチェンジ関数
 function scene_change(scene_id){
 	
+	// 大きな球体の画像を変更
 	scene.remove( sphere_mesh );
 	sphere_material.dispose()
 	sphere_material = new THREE.MeshPhongMaterial( { map: textures[scene_id], color: 0xffffff } );
@@ -87,13 +92,14 @@ function scene_change(scene_id){
 	sphere_mesh.rotation.y=to_radian(angles[scene_id]);
 	scene.add( sphere_mesh );
 	
-	
+	// マーカーの削除
 	for(var i=0;i<targets.length;i++)
 	{
 		scene.remove(targets[i]);
 	}
 	targets=new Array(targets_in_scene[scene_id].length);
 	
+	// マーカーの追加
 	for(var i=0;i<targets.length;i++)
 	{
 		// オブジェクトの作成
@@ -103,33 +109,34 @@ function scene_change(scene_id){
 		targets[i].position.z=target_zs[targets_in_scene[scene_id][i]];
 		scene.add( targets[i] );
 	}
-	
-//	geometry.dispose();
-//	material.dispose();
-//	texture.dispose();
 }
-	    
+
+
+// マーカーとの交点を計算するための視線の情報
+// THREE.Raycaster用
+var raycaster,scopedObj;
+var cursor= new THREE.Vector2(0,0);
+// THREE.Raycaster
+raycaster = new THREE.Raycaster();  
+
+
+// マーカーを見ているフレーム数をカウントするための変数
 var frame_num=0;
-			
+
+
+// 描画関数
 function render(){
 	requestAnimationFrame( render );
-	// レンダリング
-	//renderer.render(scene,camera);
 	
 	// ステレオ
 	effect.render(scene, camera);
 	controls.update();
 	
-	// ポイントが乗っているオブジェクトを取得
+	// 視線と交差するマーカーを取得
 	raycaster.setFromCamera( cursor, camera );
 	var intersects = raycaster.intersectObjects( targets );
-//	if ( intersects.length > 0 ) {
-//		scene_id = 3-scene_id;
-//		scene_change(scene_id);
-//	}
 	if ( intersects.length > 0 ) {
 		if ( scopedObj != intersects[ 0 ].object ) {
-//			if ( scopedObj ) scopedObj.scale.set(1,1,1);
 			scopedObj = intersects[ 0 ].object;
 			scopedObj.scale.set(2,2,2);
 			frame_num=0;
@@ -148,11 +155,6 @@ function render(){
 		if ( scopedObj ) scopedObj.scale.set(1,1,1);
 		scopedObj = null;
   	}
-	
-	var intersect = raycaster.intersectObject( sphere_mesh );
-	
-	//var doc0= document.getElementById("div0");  
-	//doc0.innerHTML= String(intersect[0].point.x)+" "+String(intersect[0].point.y)+" "+String(intersect[0].point.z)+" "+String(angles[2]);   
 	
 }
 render();
