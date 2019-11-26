@@ -38,7 +38,7 @@ textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
 textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
 textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
 //var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
-var angles=[0,0,-30,0];
+var angles=[0,0,-45,0];
 			
 // マテリアルの作成
 var sphere_material = new THREE.MeshPhongMaterial( { map: textures[1], color: 0xffffff } );
