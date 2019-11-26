@@ -38,7 +38,7 @@ textures[1] = new THREE.TextureLoader().load( 'scene_b.JPG' );
 textures[2] = new THREE.TextureLoader().load( 'scene_c.JPG' );
 textures[3] = new THREE.TextureLoader().load( 'scene_d.JPG' );
 //var texture = new THREE.TextureLoader().load( 'scene01.JPG' );
-var angles=[0,0,120,0];
+var angles=[0,0,0,0];
 			
 // マテリアルの作成
 var sphere_material = new THREE.MeshPhongMaterial( { map: textures[1], color: 0xffffff } );
@@ -73,14 +73,18 @@ var targets=[];
 			
 var scene_id=1;
 scene_change(scene_id);			
-			
+
+function to_radian(degree){
+	return degree*Math.PI/180;
+}
+
 function scene_change(scene_id){
 	
 	scene.remove( sphere_mesh );
 	sphere_material.dispose()
 	sphere_material = new THREE.MeshPhongMaterial( { map: textures[scene_id], color: 0xffffff } );
 	sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
-	sphere_mesh.rotation.y=angles[scene_id];
+	sphere_mesh.rotation.y=to_radian(angles[scene_id]);
 	scene.add( sphere_mesh );
 	
 	
