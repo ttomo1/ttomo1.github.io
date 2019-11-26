@@ -148,7 +148,7 @@ function render(){
 	var intersect = raycaster.intersectObject( sphere_mesh );
 	
 	var doc0= document.getElementById("div0");  
-	doc0.innerHTML= String(intersect[0].point.x)+" "+String(intersect[0].point.y)+" "+String(intersect[0].point.z);   
+	doc0.innerHTML= String(intersect[0].point.x)+" "+String(intersect[0].point.y)+" "+String(intersect[0].point.z)+" "+String(angles[2]);   
 	
 }
 render();
