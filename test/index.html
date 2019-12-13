@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<title>Device Orientation</title>
+		<link rel="manifest" href="manifest.json">
+		<!--<meta name="mobile-web-app-capable" content="yes">-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="three.min.js"></script>
+		<script src="DeviceOrientationControls.js"></script>
+		<script src="StereoEffect.js"></script>
+
+    <script>
+
+	    
+//THREE.Raycaster用
+var raycaster,scopedObj;
+var cursor= new THREE.Vector2(0,0);
+//THREE.Raycaster
+raycaster = new THREE.Raycaster();    
+	    
+
+// シーンの作成
+var scene = new THREE.Scene();
+// カメラの作成
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+// レンダラーの作成（アンチエイリアス有効）
+var renderer = new THREE.WebGLRenderer( {antialias: true} );
+
+// ステレオ
+var effect = new THREE.StereoEffect(renderer);
+
+// レンダラーが描画するキャンバスサイズの設定
+renderer.setSize( window.innerWidth, window.innerHeight );
+
+// ステレオ
+effect.setSize(window.innerWidth, window.innerHeight);
+
+// キャンバスをDOMツリーに追加
+document.body.appendChild( renderer.domElement );
+
+// 環境光の作成
+var light = new THREE.AmbientLight( 0xffffff );
+// 環境光をシーンへ追加
+scene.add( light );
+
+// DeviceOrientationControlsインスタンス作成
+var controls = new THREE.DeviceOrientationControls( camera );
+
+	    
+// 球体の作成
+var sphere_geometry = new THREE.SphereGeometry( 5, 32, 32 );
+// テクスチャを球体の裏側にマップする
+sphere_geometry.scale( - 1, 1, 1 );
+
+// テクスチャ画像の読み込み
+var texture = new THREE.TextureLoader().load( '360.jpg' );
+// マテリアルの作成
+var sphere_material = new THREE.MeshPhongMaterial( { map: texture, color: 0xffffff } );
+
+// オブジェクトの作成
+var sphere_mesh = new THREE.Mesh( sphere_geometry, sphere_material );
+// オブジェクトをy軸に沿って回転
+sphere_mesh.rotation.y = Math.PI/2;
+// オブジェクトをシーンに追加
+scene.add( sphere_mesh );
+
+
+// 球体の作成
+var target_geometry = new THREE.SphereGeometry( 0.25, 16, 16 );
+// テクスチャを球体の裏側にマップする
+//target_geometry.scale( 1, 1, 1 );
+
+// テクスチャ画像の読み込み
+//var texture = new THREE.TextureLoader().load( '360.jpg' );
+// マテリアルの作成
+var target_material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+
+// オブジェクトの作成
+var target_mesh = new THREE.Mesh( target_geometry, target_material );
+// オブジェクトをy軸に沿って回転
+target_mesh.position.x = 5.0;
+// オブジェクトをシーンに追加
+scene.add( target_mesh );
+	    
+var targets=[target_mesh];
+	    
+function render(){
+	requestAnimationFrame( render );
+
+	// レンダリング
+	//renderer.render(scene,camera);
+	
+	// ステレオ
+	effect.render(scene, camera);
+
+	controls.update();
+	
+	// ポイントが乗っているオブジェクトを取得
+
+	raycaster.setFromCamera( cursor, camera );
+	var intersects = raycaster.intersectObjects( targets );
+	if ( intersects.length > 0 ) {
+		if ( scopedObj != intersects[ 0 ].object ) {
+			if ( scopedObj ) scopedObj.scale.set(1,1,1);
+			scopedObj = intersects[ 0 ].object;
+			scopedObj.scale.set(2,2,2);
+		}
+	} else {
+		if ( scopedObj ) scopedObj.scale.set(1,1,1);
+		scopedObj = null;
+  	}
+}
+render();
+
+    </script>
+  </body>
+  </html>
