@@ -1,0 +1,50 @@
+<form name=js>
+<center>
+<table width=60%>
+<tr>
+<td width=30% align=right>団体コード</td>
+<td width=40% align=center><input type=text style=width:100% name=code></td>
+<td width=30%></td>
+</tr>
+<tr>
+<td align=right>ID</td>
+<td align=center><input type=text style=width:100% name=id></td>
+<td></td>
+</tr>
+<tr>
+<td align=right>パスワード</td>
+<td align=center><input type=text style=width:100% name=pass></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><input type=checkbox>団体コードを保存します</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align=center><input type=button style=width:100% value=ログイン onclick=login()></td>
+<td></td>
+</tr>
+</table>
+</center>
+</form>
+<script>
+code="252026-015t"
+id="21011"
+pass="3294"
+is_code_correct=false;
+is_id_correct=false;
+is_pass_correct=false;
+function login(){
+    is_code_correct=code==document.js.code.value
+    is_id_correct=code==document.js.id.value
+    is_pass_correct=code==document.js.pass.value
+    if(code==document.js.code.value){
+        alert("〇");
+    }
+    else{
+        alert("×");
+    }
+}
+</script>
