@@ -17,7 +17,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 <body>
 <div class="container">
     <div class="title margin">
-        <p id="title">BlueJelly Sample</p>
+        <p id="title">BlueJelly Sample2</p>
         <p id="subtitle">Notifyでデータ読み込み</p>
     </div>
 
@@ -86,6 +86,8 @@ ble.onRead = function (data, uuid){
   document.getElementById('data_text').innerHTML = value;
   document.getElementById('uuid_name').innerHTML = uuid;
   document.getElementById('status').innerHTML = "read data"
+
+  ble.startNotify('UUID1');
 }
 
 
