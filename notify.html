@@ -17,7 +17,7 @@ Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
 <body>
 <div class="container">
     <div class="title margin">
-        <p id="title">BlueJelly Sample2</p>
+        <p id="title">BlueJelly Sample3</p>
         <p id="subtitle">Notifyでデータ読み込み</p>
     </div>
 
@@ -49,6 +49,8 @@ const ble = new BlueJelly();
 window.onload = function () {
   //UUIDの設定
   ble.setUUID("UUID1", BlueJelly.MICROBIT_TEMPERATURE_SERVICE, BlueJelly.MICROBIT_TEMPERATURE);
+
+  ble.startNotify('UUID1');
 }
 
 
