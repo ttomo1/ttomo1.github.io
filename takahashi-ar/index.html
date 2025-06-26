@@ -6,11 +6,11 @@
   <body>
     <a-scene xr-mode-ui="XRMode:xr">
       <a-assets>
-        <a-asset-item  id="model" animation-mixer="" src="https://cdn.glitch.me/86f79fcf-985c-4467-b0e0-69fdff62fd14/sat_1700_mio.glb?v=1750980773462"></a-asset-item>
+        <a-asset-item  id="model" src="https://cdn.glitch.me/86f79fcf-985c-4467-b0e0-69fdff62fd14/sat_1700_mio.glb?v=1750980773462"></a-asset-item>
       </a-assets>  
       <a-entity id="leftHand" hand-tracking-grab-controls="hand:left"></a-entity>
       <a-entity id="rightHand" hand-tracking-grab-controls="hand:right"></a-entity>
-      <a-entity  grabbable position="0 1 -1" rotation="0 -90 0" scale="2 2 2" gltf-model="#model"></a-entity>
+      <a-entity animation-mixer="" grabbable position="0 1 -1" rotation="0 -90 0" scale="2 2 2" gltf-model="#model"></a-entity>
     </a-scene>
   </body>
 </html>
