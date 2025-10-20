@@ -13,7 +13,7 @@
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; dur: 50000;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
             embedded
             gesture-detector
@@ -41,7 +41,7 @@
                     gltf-model="#animated-asset"
                     class="clickable"
                     gesture-handler
-                    animation="property: rotation; from: 0 0 0 ; to:0 360 0 ; loop: true;"
+                    animation="property: rotation; from: 0 0 0 ; to:0 360 0 ; loop: true; dur: 50000;"
                 ></a-entity>
             </a-marker>
 
