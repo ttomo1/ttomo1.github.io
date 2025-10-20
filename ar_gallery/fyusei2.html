@@ -38,7 +38,6 @@
                 <a-entity
                     id="bowser-model"
                     scale="1.9999144663497086 1.9999144663497086 1.9999144663497086"
-                    animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     class="clickable"
                     gesture-handler
@@ -55,10 +54,12 @@
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
                 if(btn.textContent == '動かす'){
+                    entity.setAttribute("animation-mixer", "")
                     btn.textContent = '止める'
                 }
                 else{
-                    btn.textContent = '動かす'    
+                    entity.removeAttribute("animation-mixer")
+                    btn.textContent = '動かす'   
                 }
             })
         </script>
