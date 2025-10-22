@@ -51,8 +51,10 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 let asset = document.querySelector("animated-asset")
-                let path = "assets/" + new URL(decodeURIComponent(document.location.href)).searchParam.get("param1") + ".glb"
-                asset.setAttribute("src", path)
+                let param = new URL(decodeURIComponent(document.location.href)).searchParam.get("param1")
+                if(param != ""){
+                    asset.setAttribute("src", "assets/" +  + ".glb")
+                }
             })
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
