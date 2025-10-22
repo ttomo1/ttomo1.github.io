@@ -50,6 +50,7 @@
         <button type="button" id="btn" style="padding: 16px 24px; border: none; border-radius: 8pt; background: white; color: black; position: absolute; left: 50%; top: 90%; transform: translate(-50%, -50%); font-size: 24pt;" onmouseover="this.style.backgroundColor=gray"; onmouseout="this.style.backgroundColor=white";>うごく🏃🏻‍➡️</button>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
+                console.log('dom')
                 let asset = document.querySelector("animated-asset")
                 let model = new URL(decodeURIComponent(document.location.href)).searchParam.get("model")
                 if(model != ""){
@@ -58,7 +59,6 @@
             })
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
-                console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
                 if(btn.textContent == 'うごく🏃🏻‍➡️'){
