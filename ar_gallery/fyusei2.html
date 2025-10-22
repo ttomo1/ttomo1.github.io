@@ -23,14 +23,14 @@
                     id="animated-asset"
                     src="assets/fyusei.glb"
                 ></a-asset-item>
-                <a-asset-item
+                <img
                     id="stop_button"
                     src="assets/stop.png"
-                ></a-asset-item>
-                <a-asset-item
+                ></img>
+                <img
                     id="play_button"
                     src="assets/play.png"
-                ></a-asset-item>
+                ></img>
             </a-assets>
 
             <a-marker
@@ -52,10 +52,11 @@
                     animation="property: rotation; from: 0 0 0 ; to:0 360 0 ; loop: true; dur: 40000; easing: linear;"
                 ></a-entity>
             </a-marker>
-
+            
             <a-entity camera></a-entity>
+
+            <button id="btn" src="#stop_button" style="position: absolute; left: 50%; top: 50%;">動かす</button>
         </a-scene>
-        <button type="button" id="btn" src="assets/play.png" style="position: absolute; left: 50%; top: 50%;">動かす</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
