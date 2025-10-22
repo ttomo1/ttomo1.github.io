@@ -23,14 +23,6 @@
                     id="animated-asset"
                     src="assets/fyusei.glb"
                 ></a-asset-item>
-                <img
-                    id="stop_button"
-                    src="assets/stop.png"
-                ></img>
-                <img
-                    id="play_button"
-                    src="assets/play.png"
-                ></img>
             </a-assets>
 
             <a-marker
@@ -55,7 +47,7 @@
             
             <a-entity camera></a-entity>
 
-            <button id="btn" src="#stop_button" style="position: absolute; left: 50%; top: 50%;">動かす</button>
+            <img id="btn" src="assets/play.png" style="position: absolute; left: 50%; top: 50%;">動かす</img>
         </a-scene>
         <script>
             let btn = document.querySelector("#btn")
