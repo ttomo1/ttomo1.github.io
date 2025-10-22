@@ -47,20 +47,20 @@
 
             <a-entity camera></a-entity>
         </a-scene>
-        <button type="button" id="btn" style="position: absolute; left: 50%; top: 50%;">動かす</button>
+        <button type="button" id="btn" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 300%;">うごく</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
                 console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
-                if(btn.textContent == '動かす'){
+                if(btn.textContent == 'うごく'){
                     entity.setAttribute("animation-mixer", "")
-                    btn.textContent = '止める'
+                    btn.textContent = 'とまる'
                 }
                 else{
                     entity.removeAttribute("animation-mixer")
-                    btn.textContent = '動かす'   
+                    btn.textContent = 'うごく'   
                 }
             })
         </script>
