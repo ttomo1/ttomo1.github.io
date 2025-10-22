@@ -52,7 +52,7 @@
             document.addEventListener("DOMContentLoaded", () => {
                 let asset = document.querySelector("animated-asset")
                 let model = new URL(decodeURIComponent(document.location.href)).searchParam.get("model")
-                if(param != ""){
+                if(model != ""){
                     asset.setAttribute("src", "assets/" + model + ".glb")
                 }
             })
