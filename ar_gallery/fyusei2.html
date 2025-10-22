@@ -17,7 +17,6 @@
             id="scene"
             embedded
             gesture-detector
-            webxr="optionalFeatures: dom-overlay; overlayElement:#overlay;"
         >
             <a-assets>
                 <a-asset-item
@@ -45,24 +44,23 @@
                     animation="property: rotation; from: 0 0 0 ; to:0 360 0 ; loop: true; dur: 40000; easing: linear;"
                 ></a-entity>
             </a-marker>
-            
-            <a-entity camera></a-entity>
 
-                <button id="btn" type="button" style="position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -ms-transfrom: translate(-50%, -50%); font-size: 300%;">うごく</button>
+            <a-entity camera></a-entity>
         </a-scene>
+        <button type="button" id="btn" style="position: absolute; left: 50%; top: 50%;">動かす</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
                 console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
-                if(btn.textContent == 'うごく'){
+                if(btn.textContent == '動かす'){
                     entity.setAttribute("animation-mixer", "")
-                    btn.textContent = 'とまる'
+                    btn.textContent = '止める'
                 }
                 else{
                     entity.removeAttribute("animation-mixer")
-                    btn.textContent = 'うごく'   
+                    btn.textContent = '動かす'   
                 }
             })
         </script>
