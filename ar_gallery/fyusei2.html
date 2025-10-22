@@ -47,7 +47,7 @@
 
             <a-entity camera></a-entity>
         </a-scene>
-        <button type="button" id="btn" border: none; style="border-radius: 8pt; background: white; color: black; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;">うごく🏃🏻‍➡️</button>
+        <button type="button" id="btn" border: none; style="border-radius: 8pt; background: white; color: black; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;" onmouseover="this.style.backgroundColor=gray"; onmouseout="this.style.backgroundColor=white";>うごく🏃🏻‍➡️</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
