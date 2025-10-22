@@ -51,16 +51,16 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 console.log('dom')
-                let asset = document.querySelector("animated-asset")
+                let asset = document.getElementById("animated-asset")
                 let model = new URLSearchParams(document.location.search).get("model")
                 console.log(model)
                 if(model != ""){
                     asset.setAttribute("src", "assets/" + model + ".glb")
                 }
             })
-            let btn = document.querySelector("#btn")
+            let btn = document.getElementById("btn")
             btn.addEventListener('click', () => {
-                let entity = document.querySelector("#bowser-model")
+                let entity = document.getElementById("bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
                 if(btn.textContent == 'うごく🏃🏻‍➡️'){
                     entity.setAttribute("animation-mixer", "")
