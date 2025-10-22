@@ -47,7 +47,7 @@
 
             <a-entity camera></a-entity>
         </a-scene>
-        <button type="button" id="btn" style="border-radius: 4pt; background: blue; color: white; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;">うごく</button>
+        <button type="button" id="btn" style="border-radius: 4pt; background: green; color: white; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;">うごく</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
@@ -59,7 +59,8 @@
                     btn.textContent = 'とまる'
                 }
                 else{
-                    entity.removeAttribute("animation-mixer")
+                    entity.removeAttribute("gltf-model")
+                    entity.setAttribute("gltf-model", "#animated-asset")
                     btn.textContent = 'うごく'   
                 }
             })
