@@ -47,22 +47,22 @@
 
             <a-entity camera></a-entity>
         </a-scene>
-        <button type="button" id="btn" style="border-radius: 8pt; background: black; color: white; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;">うごく</button>
+        <button type="button" id="btn" border: none; style="border-radius: 8pt; background: white; color: black; position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); font-size: 24pt;">うごく🏃🏻‍➡️</button>
         <script>
             let btn = document.querySelector("#btn")
             btn.addEventListener('click', () => {
                 console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
-                if(btn.textContent == 'うごく'){
+                if(btn.textContent == 'うごく🏃🏻‍➡️'){
                     entity.setAttribute("animation-mixer", "")
-                    btn.textContent = 'とまる'
+                    btn.textContent = 'とまる🧍🏻'
                 }
                 else{
                     entity.removeAttribute("animation-mixer")
                     entity.removeAttribute("gltf-model")
                     entity.setAttribute("gltf-model", "#animated-asset")
-                    btn.textContent = 'うごく'   
+                    btn.textContent = 'うごく🏃🏻‍➡️'   
                 }
             })
         </script>
