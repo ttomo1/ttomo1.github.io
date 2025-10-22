@@ -47,7 +47,7 @@
             
             <a-entity camera></a-entity>
 
-            <button id="btn" style="position: absolute; left: 50%; top: 50%; font-size: 500%;">動かす</button>
+            <button id="btn" style="position: absolute; left: 50%; top: 50%; font-size: 500%;">🏃‍➡️</button>
         </a-scene>
         <script>
             let btn = document.querySelector("#btn")
@@ -55,13 +55,13 @@
                 console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
-                if(btn.textContent == '動かす'){
+                if(btn.textContent == '🏃‍➡️'){
                     entity.setAttribute("animation-mixer", "")
-                    btn.textContent = '止める'
+                    btn.textContent = '🧍'
                 }
                 else{
                     entity.removeAttribute("animation-mixer")
-                    btn.textContent = '動かす'   
+                    btn.textContent = '🏃‍➡️'   
                 }
             })
         </script>
