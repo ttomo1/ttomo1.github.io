@@ -17,6 +17,7 @@
             id="scene"
             embedded
             gesture-detector
+            webxr="optionalFeatures: dom-overlay; overlayElement:#overlay;"
         >
             <a-assets>
                 <a-asset-item
@@ -47,7 +48,9 @@
             
             <a-entity camera></a-entity>
 
-            <button id="btn" style="position: absolute; left: 50%; top: 50%; font-size: 500%;">🏃‍➡️</button>
+            <div id="overlay">
+                <button id="btn" style="position: absolute; left: 50%; top: 50%; font-size: 500%;">🏃‍➡️</button>
+            </div>
         </a-scene>
         <script>
             let btn = document.querySelector("#btn")
