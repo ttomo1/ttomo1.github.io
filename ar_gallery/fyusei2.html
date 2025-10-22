@@ -49,7 +49,7 @@
             <a-entity camera></a-entity>
 
             <div id="overlay">
-                <button id="btn" style="position: absolute; left: 50%; top: 50%; font-size: 500%;">🏃‍➡️</button>
+                <button id="btn" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -ms-transfrom: translate(-50%, -50%); font-size: 300%;">うごく</button>
             </div>
         </a-scene>
         <script>
@@ -58,13 +58,13 @@
                 console.log('test')
                 let entity = document.querySelector("#bowser-model")
                 console.log(entity.getAttribute("animation-mixer"))
-                if(btn.textContent == '🏃‍➡️'){
+                if(btn.textContent == 'うごく'){
                     entity.setAttribute("animation-mixer", "")
-                    btn.textContent = '🧍'
+                    btn.textContent = 'とまる'
                 }
                 else{
                     entity.removeAttribute("animation-mixer")
-                    btn.textContent = '🏃‍➡️'   
+                    btn.textContent = 'うごく'   
                 }
             })
         </script>
